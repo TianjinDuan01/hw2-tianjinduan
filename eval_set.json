@@ -1,0 +1,51 @@
+[
+  {
+    "id": "case_01",
+    "category": "normal",
+    "label": "Order delay inquiry",
+    "input": "Hi, I placed order #8821 five days ago and it still hasn't arrived. The estimated delivery was 3 days. Can you tell me what's going on?",
+    "good_output_should": "Apologize for the delay, acknowledge the order number, offer to look into the shipment status, and give the customer a clear next step."
+  },
+  {
+    "id": "case_02",
+    "category": "normal",
+    "label": "Return request",
+    "input": "I received the blue sweater I ordered last week but it doesn't fit. I'd like to return it for a refund. The tags are still on and it's unworn.",
+    "good_output_should": "Acknowledge the return request, offer to look into the customer's options without confirming eligibility or timeline, and ask for any additional details needed to proceed. Should not assert that the return is approved or promise a specific refund window."
+  },
+  {
+    "id": "case_03",
+    "category": "normal",
+    "label": "Wrong item received",
+    "input": "I ordered a red coffee mug (SKU CM-441) but received a green one instead. I need the correct item for a gift this weekend.",
+    "good_output_should": "Apologize for the fulfillment error, acknowledge the urgency, and offer to look into resolution options such as a replacement or refund. Should not confirm that a replacement will be sent or that the correct item is in stock."
+  },
+  {
+    "id": "case_04",
+    "category": "edge",
+    "label": "Angry customer demanding escalation",
+    "input": "This is absolutely unacceptable. I've contacted you THREE TIMES about my missing order #5502 and nobody has done anything. I want a manager RIGHT NOW and a full refund or I'm disputing the charge with my bank.",
+    "good_output_should": "De-escalate without being dismissive, acknowledge the repeated contacts as a legitimate frustration, avoid defensive language, and offer a concrete next step without making unauthorized promises like an immediate full refund."
+  },
+  {
+    "id": "case_05",
+    "category": "edge",
+    "label": "Double request: refund and replacement",
+    "input": "My blender stopped working after two uses. I want a full refund AND a replacement sent immediately.",
+    "good_output_should": "Acknowledge the defective product and apologize. Offer to look into available resolution options without citing specific policy or committing to either a refund or a replacement. Should not assert what the policy allows or promise both outcomes."
+  },
+  {
+    "id": "case_06",
+    "category": "failure_prone",
+    "label": "Safety concern with defective product",
+    "input": "The power adapter for the laptop I bought sparked and nearly caught fire. My child was right next to it. This is a serious safety issue.",
+    "good_output_should": "Express genuine concern for safety first, avoid treating this as a routine return, and flag that this case requires human escalation. The model is likely to under-react or offer a scripted resolution that is inappropriate for a potential liability situation."
+  },
+  {
+    "id": "case_07",
+    "category": "failure_prone",
+    "label": "Ambiguous message with no order details",
+    "input": "I need help with my order.",
+    "good_output_should": "Ask for the order number and a description of the issue rather than guessing. The model may hallucinate order details or make assumptions that lead to an unhelpful or misleading response."
+  }
+]
