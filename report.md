@@ -12,9 +12,11 @@ I used Gemini 2.5 Flash via the Google Generative AI API. I chose it because it 
 
 The initial prompt gave the model a role, a tone, and a few guardrails. Outputs were polite and safe but vague — responses acknowledged the issue and apologized without offering a clear next step or telling the customer what information was needed.
 
-Revision 1 added two explicit rules: acknowledge the specific issue in the opening sentence, and always include a concrete next step. This produced a noticeable improvement. For the order delay case, the model stated that support would investigate the shipment rather than just apologizing. Responses were more actionable.
+Revision 1 added two explicit rules: acknowledge the specific issue in the opening sentence, and always include a concrete next step. This produced a noticeable improvement. For the order delay case, the model stated that support would investigate the shipment rather than just apologizing. Responses were more actionable and generally felt more balanced.
 
-Revision 2 banned generic filler phrases and restructured the next-step rule into two explicit patterns. Responses became shorter and tighter, but the ban on filler sometimes removed the apology as well, making replies feel less empathetic. The tradeoff was real: more concise, but occasionally less complete than Revision 1. The final prompt is stronger on safety escalation and ambiguous cases, but still produces overly cautious replies on straightforward normal cases.
+Revision 2 banned generic filler phrases and restructured the next-step rule into two explicit patterns. Responses became shorter and tighter, but the ban on filler sometimes removed the apology as well, making replies feel less empathetic. The tradeoff was real: more concise, but occasionally less complete than Revision 1.
+
+Based on those results, Revision 1 was the better final version for this prototype. It was not perfect, but it gave a better balance between clarity, empathy, and safety than Revision 2.
 
 ## Where the Prototype Still Fails
 
@@ -22,4 +24,4 @@ The prototype handles safety escalation and ambiguous inputs better than the bas
 
 ## Deployment Recommendation
 
-I would not recommend deploying this as an autonomous reply system. The outputs are useful as drafts that reduce agent workload, but the model is inconsistent on edge cases and too cautious on normal ones. A reasonable deployment model would be: present the draft to the agent before sending, require agent approval for every message, and route any case flagged for escalation directly to a human queue without surfacing a draft at all. Under those conditions, this prototype is a reasonable starting point.
+I would not recommend deploying this as an autonomous reply system. The outputs are useful as drafts that reduce agent workload, but the model is still inconsistent on edge cases and can be either too cautious or too minimal depending on the prompt version. A reasonable deployment model would be: present the draft to the agent before sending, require agent approval for every message, and route any case flagged for escalation directly to a human queue without surfacing a draft at all. Under those conditions, this prototype is a reasonable starting point.
